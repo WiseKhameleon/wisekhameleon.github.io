@@ -18,6 +18,17 @@ Licence URI: http://www.os-templates.com/template-terms
     <div id="logo">
       <h1><a href="index.html">Wise Khameleon Shrine</a></h1>
       <p>A wisdom repository</p>
+  <style>
+    /* CSS para reducir el tamaño de la letra */
+    #logo h1 {
+      font-size: 24px; /* Tamaño del título principal */
+    }
+
+    #logo p {
+      font-size: 14px; /* Tamaño del subtítulo */
+    }
+  </style>
+      
     </div>
     <div id="topnav">
       <ul>
@@ -27,6 +38,66 @@ Licence URI: http://www.os-templates.com/template-terms
          <li><a href="pages/about-me.html">About Me</a></li>
         <li><a href="#">Link Text</a></li>
         <li class="last"><a href="#">A Long Link Text</a></li>
+
+        /* Prueba de ingreso precios de Crypto */
+
+
+        <div id="crypto-prices">
+  <h2>Precios de Criptomonedas</h2>
+  <div>
+    <p>Bitcoin (BTC): <span id="btc-price">Cargando...</span></p>
+    <p>Ethereum (ETH): <span id="eth-price">Cargando...</span></p>
+    <p>Cardano (ADA): <span id="ada-price">Cargando...</span></p>
+    <p>Dogecoin (DOGE): <span id="doge-price">Cargando...</span></p>
+  </div>
+</div>
+
+        // API URL de CoinGecko
+const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano,dogecoin&vs_currencies=usd';
+
+// Función para obtener precios y actualizarlos en la página
+async function fetchCryptoPrices() {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    // Actualiza los precios en el HTML
+    document.getElementById('btc-price').innerText = `$${data.bitcoin.usd}`;
+    document.getElementById('eth-price').innerText = `$${data.ethereum.usd}`;
+    document.getElementById('ada-price').innerText = `$${data.cardano.usd}`;
+    document.getElementById('doge-price').innerText = `$${data.dogecoin.usd}`;
+  } catch (error) {
+    console.error('Error al obtener precios:', error);
+  }
+}
+
+// Llama a la función al cargar la página
+fetchCryptoPrices();
+
+// Opcional: Actualizar precios cada minuto
+setInterval(fetchCryptoPrices, 60000);
+
+#crypto-prices {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#crypto-prices h2 {
+  color: #333;
+}
+
+#crypto-prices p {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+        
+/* Fin pruebas Crypto */
+
+        
       </ul>
     </div>
     <br class="clear" />
