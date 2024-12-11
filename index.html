@@ -21,7 +21,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <style>
     /* CSS para reducir el tamaño de la letra */
     #logo h1 {
-      font-size: 24px; /* Tamaño del título principal */
+      font-size: 10px; /* Tamaño del título principal */
     }
 
     #logo p {
@@ -38,8 +38,8 @@ Licence URI: http://www.os-templates.com/template-terms
          <li><a href="pages/about-me.html">About Me</a></li>
         <li><a href="#">Link Text</a></li>
         <li class="last"><a href="#">A Long Link Text</a></li>
-
-        /* Prueba de ingreso precios de Crypto */
+        
+<!-- Prueba Crypto !-->
 
 
         <div id="crypto-prices">
@@ -52,16 +52,16 @@ Licence URI: http://www.os-templates.com/template-terms
   </div>
 </div>
 
-        // API URL de CoinGecko
+        <!--  API URL de CoinGecko!-->
 const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano,dogecoin&vs_currencies=usd';
 
-// Función para obtener precios y actualizarlos en la página
+<!--// Función para obtener precios y actualizarlos en la página !-->
 async function fetchCryptoPrices() {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    // Actualiza los precios en el HTML
+  <!--   // Actualiza los precios en el HTML!-->
     document.getElementById('btc-price').innerText = `$${data.bitcoin.usd}`;
     document.getElementById('eth-price').innerText = `$${data.ethereum.usd}`;
     document.getElementById('ada-price').innerText = `$${data.cardano.usd}`;
@@ -71,10 +71,10 @@ async function fetchCryptoPrices() {
   }
 }
 
-// Llama a la función al cargar la página
+<!--  Llama a la función al cargar la página !-->
 fetchCryptoPrices();
 
-// Opcional: Actualizar precios cada minuto
+<!-- Opcional: Actualizar precios cada minuto !-->
 setInterval(fetchCryptoPrices, 60000);
 
 #crypto-prices {
@@ -94,8 +94,8 @@ setInterval(fetchCryptoPrices, 60000);
   font-size: 1.2em;
   margin: 5px 0;
 }
-        
-/* Fin pruebas Crypto */
+        <!-- Fin pruebas Crypto !-->
+
 
         
       </ul>
