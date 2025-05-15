@@ -24,7 +24,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <li class="active"><a href="index.html">Home</a></li>
         <li><a href="pages/style-demo.html">Style Demo</a></li>
         <li><a href="pages/full-width.html">Full Width</a></li>
-        <li><a href="#">Link Text</a></li>
+        <li><a href="pages/subida.html">Mi nube privada</a></li>
         <li class="last"><a href="#">A Long Link Text</a></li>
       </ul>
     </div>
