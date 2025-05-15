@@ -151,5 +151,9 @@ Licence URI: http://www.os-templates.com/template-terms
     <br class="clear" />
   </div>
 </div>
+
+<script src="app.js"></script>
+
+  
 </body>
 </html>
