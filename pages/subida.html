@@ -2,42 +2,72 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Subida privada</title>
+  <title>Subida de Archivos</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    #login, #contenido { max-width: 400px; margin: auto; }
+    #contenido, #formulario { display: none; }
+  </style>
 </head>
 <body>
-  <h1>Subir archivo</h1>
-  <form id="formulario">
-    <input type="file" name="archivo" required />
-    <button type="submit">Subir</button>
-  </form>
+  <h2>Acceso restringido</h2>
 
-  <p id="mensaje"></p>
+  <div id="login">
+    <input type="password" id="claveAcceso" placeholder="Ingresa contraseña" required>
+    <button onclick="verificarAcceso()">Entrar</button>
+    <p id="mensajeLogin" style="color: red;"></p>
+  </div>
+
+  <div id="contenido">
+    <h3>Subir archivo</h3>
+    <form id="formulario">
+      <input type="file" name="archivo" required><br><br>
+      <button type="submit">Subir</button>
+    </form>
+    <p id="mensajeSubida"></p>
+  </div>
 
   <script>
-    document.getElementById('formulario').addEventListener('submit', async (e) => {
+    async function verificarAcceso() {
+      const password = document.getElementById("claveAcceso").value;
+
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+
+      if (response.ok) {
+        sessionStorage.setItem("token", password); // Se guarda en navegador
+        document.getElementById("login").style.display = "none";
+        document.getElementById("contenido").style.display = "block";
+      } else {
+        document.getElementById("mensajeLogin").textContent = "Contraseña incorrecta.";
+      }
+    }
+
+    document.getElementById("formulario").addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      const archivo = document.querySelector("input[type='file']").files[0];
       const formData = new FormData();
-      const archivo = document.querySelector('input[type="file"]').files[0];
-      formData.append('archivo', archivo);
+      formData.append("archivo", archivo);
 
-      const password = prompt("Ingresa la contraseña:");
+      const token = sessionStorage.getItem("token");
 
-      try {
-        const respuesta = await fetch('https://whitekhameleon.ddns.net/subir', {
-          method: 'POST',
-          headers: {
-            'x-upload-password': password
-          },
-          body: formData
-        });
+      const respuesta = await fetch("/subir", {
+        method: "POST",
+        headers: {
+          "x-upload-password": token,
+        },
+        body: formData,
+      });
 
-        const texto = await respuesta.text();
-        document.getElementById('mensaje').textContent = texto;
-      } catch (error) {
-        document.getElementById('mensaje').textContent = 'Error al subir el archivo.';
-      }
+      const texto = await respuesta.text();
+      document.getElementById("mensajeSubida").textContent = texto;
     });
   </script>
 </body>
 </html>
+
+
