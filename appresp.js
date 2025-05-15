@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.getElementById("uploadAccessBtn");
 
   // Solicita la contraseña cuando se carga la página
-  const userPassword = prompt("Contraseña para mostrar el botón de subida:");
+    uploadButton.addEventListener("click", () => {
+    const password = prompt("Ingresa la contraseña para continuar:");
 
-  if (userPassword === "TuClaveSecretaDeFrontend") {
+  if (userPassword === "") {
     button.style.display = "inline-block";
   }
 
