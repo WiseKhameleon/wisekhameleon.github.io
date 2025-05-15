@@ -24,7 +24,11 @@ Licence URI: http://www.os-templates.com/template-terms
     }
   };
 </script>
-<!-- Prueba fuente !-->
+
+ <style>
+
+
+    <!-- Prueba fuente !-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
@@ -81,8 +85,18 @@ Licence URI: http://www.os-templates.com/template-terms
   margin-right: 8px;
   font-size: 18px;
 }
+    /* CSS para reducir el tamaño de la letra */
+    #logo h1 {
+      font-size: 10px; /* Tamaño del título principal */
+    }
 
-<!-- Prueba fuente !-->
+    #logo p {
+      font-size: 14px; /* Tamaño del subtítulo */
+    }
+
+
+    
+  </style>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
