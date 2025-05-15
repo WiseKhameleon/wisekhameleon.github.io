@@ -152,7 +152,7 @@ Licence URI: http://www.os-templates.com/template-terms
   </div>
 </div>
 
-<script src="app.js"></script>
+
 
   
 </body>
