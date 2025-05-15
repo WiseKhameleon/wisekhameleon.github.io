@@ -6,6 +6,25 @@ Author URI: http://www.os-templates.com/
 Licence: Free to use under our free template licence terms
 Licence URI: http://www.os-templates.com/template-terms
 -->
+<script>
+  window.onload = async () => {
+    try {
+      const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url");
+      const data = await res.json();
+      const ngrokURL = data.url;
+
+      // Actualiza el botón de subida
+      const subirBtn = document.getElementById("btn-subida");
+      if (subirBtn) {
+        subirBtn.href = `${ngrokURL}/subida`;
+        subirBtn.innerText = "Subir archivo (ngrok)";
+      }
+    } catch (err) {
+      console.error("No se pudo obtener la URL ngrok:", err);
+    }
+  };
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Wise Khameleon</title>
@@ -25,7 +44,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <li><a href="pages/style-demo.html">Style Demo</a></li>
         <li><a href="pages/full-width.html">Full Width</a></li>
         <li class="last"><a href="#">A Long Link Text</a></li>
-        <button onclick="window.location.href='https://whitekhameleon.ddns.net/subida'">💭Mi nube</button>
+        <a id="btn-subida" href="#">💭Mi nube</a>
       </ul>
     </div>
     <br class="clear" />
