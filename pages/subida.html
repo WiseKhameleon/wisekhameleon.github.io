@@ -1,73 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Subida de Archivos</title>
+  <meta charset="UTF-8">
+  <title>Subir Archivos</title>
   <style>
-    body { font-family: sans-serif; padding: 2rem; }
-    #login, #contenido { max-width: 400px; margin: auto; }
-    #contenido, #formulario { display: none; }
+    body { font-family: sans-serif; margin: 40px; }
+    #formulario, #mensaje { display: none; margin-top: 20px; }
   </style>
 </head>
 <body>
-  <h2>Acceso restringido</h2>
+  <h2>Autenticación</h2>
+  <input type="password" id="password" placeholder="Ingresa tu contraseña">
+  <button onclick="verificarPassword()">Entrar</button>
 
-  <div id="login">
-    <input type="password" id="claveAcceso" placeholder="Ingresa contraseña" required>
-    <button onclick="verificarAcceso()">Entrar</button>
-    <p id="mensajeLogin" style="color: red;"></p>
-  </div>
-
-  <div id="contenido">
-    <h3>Subir archivo</h3>
-    <form id="formulario">
+  <div id="formulario">
+    <h2>Subir archivo</h2>
+    <form id="uploadForm">
       <input type="file" name="archivo" required><br><br>
       <button type="submit">Subir</button>
     </form>
-    <p id="mensajeSubida"></p>
+    <div id="mensaje"></div>
   </div>
 
   <script>
-    async function verificarAcceso() {
-      const password = document.getElementById("claveAcceso").value;
+    let passwordIngresada = '';
 
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+    async function verificarPassword() {
+      const password = document.getElementById('password').value;
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password })
       });
 
-      if (response.ok) {
-        sessionStorage.setItem("token", password); // Se guarda en navegador
-        document.getElementById("login").style.display = "none";
-        document.getElementById("contenido").style.display = "block";
+      if (res.ok) {
+        passwordIngresada = password;
+        document.getElementById('formulario').style.display = 'block';
+        document.querySelector('h2').style.display = 'none';
+        document.getElementById('password').style.display = 'none';
+        document.querySelector('button').style.display = 'none';
       } else {
-        document.getElementById("mensajeLogin").textContent = "Contraseña incorrecta.";
+        alert('Contraseña incorrecta');
       }
     }
 
-    document.getElementById("formulario").addEventListener("submit", async (e) => {
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-
-      const archivo = document.querySelector("input[type='file']").files[0];
-      const formData = new FormData();
-      formData.append("archivo", archivo);
-
-      const token = sessionStorage.getItem("token");
-
-      const respuesta = await fetch("/subir", {
-        method: "POST",
-        headers: {
-          "x-upload-password": token,
-        },
+      const formData = new FormData(this);
+      const res = await fetch('/subir', {
+        method: 'POST',
         body: formData,
+        headers: { 'x-upload-password': passwordIngresada }
       });
 
-      const texto = await respuesta.text();
-      document.getElementById("mensajeSubida").textContent = texto;
+      const mensaje = document.getElementById('mensaje');
+      mensaje.innerText = res.ok ? 'Archivo subido correctamente.' : 'Error al subir archivo.';
+      mensaje.style.display = 'block';
     });
   </script>
 </body>
 </html>
+
 
 
