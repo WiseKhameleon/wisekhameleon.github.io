@@ -24,6 +24,65 @@ Licence URI: http://www.os-templates.com/template-terms
     }
   };
 </script>
+<!-- Prueba fuente !-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto :wght@500&display=swap');
+
+#btn-subida {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: linear-gradient(to right, #00415b, #18005b);
+  display: inline-block;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto brillo */
+#btn-subida::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+#btn-subida:hover::before {
+  opacity: 1;
+}
+
+/* Cambio de gradiente y tamaño en hover */
+#btn-subida:hover {
+  background: linear-gradient(to right, #00575b, #3a00ff);
+  transform: scale(0.95);
+}
+
+/* Efecto pulsación al hacer clic */
+#btn-subida:active {
+  transform: scale(0.9);
+}
+
+#btn-subida i.fas.fa-cloud {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+<!-- Prueba fuente !-->
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -43,8 +102,10 @@ Licence URI: http://www.os-templates.com/template-terms
           <li class="active"><a href="index.html">Home</a></li>
         <li><a href="pages/style-demo.html">Style Demo</a></li>
         <li><a href="pages/full-width.html">Full Width</a></li>
-        <li class="last"><a href="#">A Long Link Text</a></li>
-        <a id="btn-subida" href="#">💭Mi nube</a>
+        <li class="last"><a href="#">A Long Link Text</a></li>  
+          <a id="btn-subida" href="#">
+          <i class="fas fa-cloud"></i> Mi nube
+          <i class="fa-solid fa-house-tsunami"></i></a>
       </ul>
     </div>
     <br class="clear" />
