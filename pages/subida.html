@@ -1,13 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Subida de archivos</title>
+  <meta charset="UTF-8" />
+  <title>Subida privada</title>
 </head>
 <body>
-  <h2>Subir archivo</h2>
-  <form action="http://whitekhameleon.ddns.net:3737/subir" method="post" enctype="multipart/form-data">
+  <h1>Subir archivo</h1>
+  <form id="formulario">
     <input type="file" name="archivo" required />
     <button type="submit">Subir</button>
   </form>
+
+  <p id="mensaje"></p>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      const archivo = document.querySelector('input[type="file"]').files[0];
+      formData.append('archivo', archivo);
+
+      const password = prompt("Ingresa la contraseña:");
+
+      try {
+        const respuesta = await fetch('https://whitekhameleon.ddns.net/subir', {
+          method: 'POST',
+          headers: {
+            'x-upload-password': password
+          },
+          body: formData
+        });
+
+        const texto = await respuesta.text();
+        document.getElementById('mensaje').textContent = texto;
+      } catch (error) {
+        document.getElementById('mensaje').textContent = 'Error al subir el archivo.';
+      }
+    });
+  </script>
 </body>
 </html>
