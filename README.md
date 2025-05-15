@@ -24,8 +24,8 @@ Licence URI: http://www.os-templates.com/template-terms
         <li class="active"><a href="index.html">Home</a></li>
         <li><a href="pages/style-demo.html">Style Demo</a></li>
         <li><a href="pages/full-width.html">Full Width</a></li>
-        <button id="uploadAccessBtn" style="display: none;">🔐 Mi nube</button>
         <li class="last"><a href="#">A Long Link Text</a></li>
+        <button id="uploadAccessBTN">💭Mi nube</button>
       </ul>
     </div>
     <br class="clear" />
