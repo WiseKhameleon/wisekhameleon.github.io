@@ -1,61 +1,42 @@
+<!-- subida.html -->
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Subir Archivos</title>
-  <style>
-    body { font-family: sans-serif; margin: 40px; }
-    #formulario, #mensaje { display: none; margin-top: 20px; }
-  </style>
+  <title>Subir archivo</title>
 </head>
 <body>
-  <h2>Autenticación</h2>
-  <input type="password" id="password" placeholder="Ingresa tu contraseña">
-  <button onclick="verificarPassword()">Entrar</button>
+  <h2>Subir archivo</h2>
+  <form id="formularioSubida">
+    <input type="file" name="archivo" id="archivo" required>
+    <input type="password" id="clave" placeholder="Contraseña" required>
+    <button type="submit">Subir</button>
+  </form>
 
-  <div id="formulario">
-    <h2>Subir archivo</h2>
-    <form id="uploadForm">
-      <input type="file" name="archivo" required><br><br>
-      <button type="submit">Subir</button>
-    </form>
-    <div id="mensaje"></div>
-  </div>
+  <p id="respuesta"></p>
 
   <script>
-    let passwordIngresada = '';
+    const BACKEND_URL = 'https://whitekhameleon.ddns.net:3737'; // cambia esto si usas ngrok temporal
 
-    async function verificarPassword() {
-      const password = document.getElementById('password').value;
-      const res = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password })
-      });
-
-      if (res.ok) {
-        passwordIngresada = password;
-        document.getElementById('formulario').style.display = 'block';
-        document.querySelector('h2').style.display = 'none';
-        document.getElementById('password').style.display = 'none';
-        document.querySelector('button').style.display = 'none';
-      } else {
-        alert('Contraseña incorrecta');
-      }
-    }
-
-    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+    document.getElementById('formularioSubida').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
-      const res = await fetch('/subir', {
+
+      const password = document.getElementById('clave').value;
+      const archivo = document.getElementById('archivo').files[0];
+
+      const formData = new FormData();
+      formData.append('archivo', archivo);
+
+      const respuesta = await fetch(`${BACKEND_URL}/subir`, {
         method: 'POST',
-        body: formData,
-        headers: { 'x-upload-password': passwordIngresada }
+        headers: {
+          'Authorization': 'Basic ' + btoa('admin:' + password)
+        },
+        body: formData
       });
 
-      const mensaje = document.getElementById('mensaje');
-      mensaje.innerText = res.ok ? 'Archivo subido correctamente.' : 'Error al subir archivo.';
-      mensaje.style.display = 'block';
+      const resultado = await respuesta.json();
+      document.getElementById('respuesta').textContent = resultado.mensaje || 'Error al subir.';
     });
   </script>
 </body>
