@@ -31,6 +31,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <head>
   
      <!-- Prueba fuente !-->
+
+     
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
@@ -42,65 +44,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
 <!-- prueba Head CSS !-->
-<style>
-  /* Estilo del botón */
-  #btn-subida {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background: linear-gradient(to right, #00415b, #18005b);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.5s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-  }
 
-  #btn-subida::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
-    transform: rotate(25deg);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-
-  #btn-subida:hover::before {
-    opacity: 1;
-  }
-
-  #btn-subida:hover {
-    background: linear-gradient(to right, #00575b, #3a00ff);
-    transform: scale(0.95);
-  }
-
-  #btn-subida:active {
-    transform: scale(0.9);
-  }
-
-  #btn-subida i.fas.fa-cloud {
-    font-size: 18px;
-  }
-
-  /* Reducir tamaño del logo */
-  #logo h1 {
-    font-size: 10px;
-  }
-  #logo p {
-    font-size: 14px;
-  }
-</style>
 
 <!-- prueba Head CSS !-->
 </head>
@@ -245,7 +189,65 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 
 
+<style>
+  /* Estilo del botón */
+  #btn-subida {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(to right, #00415b, #18005b);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
 
+  #btn-subida::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
+    transform: rotate(25deg);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  #btn-subida:hover::before {
+    opacity: 1;
+  }
+
+  #btn-subida:hover {
+    background: linear-gradient(to right, #00575b, #3a00ff);
+    transform: scale(0.95);
+  }
+
+  #btn-subida:active {
+    transform: scale(0.9);
+  }
+
+  #btn-subida i.fas.fa-cloud {
+    font-size: 18px;
+  }
+
+  /* Reducir tamaño del logo */
+  #logo h1 {
+    font-size: 10px;
+  }
+  #logo p {
+    font-size: 14px;
+  }
+</style>
   
 </body>
 </html>
