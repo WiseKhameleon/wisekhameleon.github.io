@@ -39,7 +39,9 @@ Licence URI: http://www.os-templates.com/template-terms
       transition: all 0.5s ease;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* Evita que el botón se corte */
+      white-space: nowrap; /* Evita que el texto se rompa */
+      /* overflow: hidden; */
     }
 
     #btn-subida::before {
