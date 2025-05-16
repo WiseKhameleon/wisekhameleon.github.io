@@ -90,7 +90,6 @@ Licence URI: http://www.os-templates.com/template-terms
         const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url ");
         const data = await res.json();
         const ngrokURL = data.url;
-
         // Actualiza el botón de subida
         const subirBtn = document.getElementById("btn-subida");
         if (subirBtn) {
@@ -106,10 +105,9 @@ Licence URI: http://www.os-templates.com/template-terms
   <div class="wrapper">
     <div id="header">
       <div id="logo">
-        <h1><a href="index.html">Wise Khameleon Shrine</a></h1>
+        <h1><a href="https://wisekhameleon.github.io">Wise Khameleon Shrine</a></h1>
         <p>A wisdom repository</p>
       </div>
-
       <div id="topnav">
         <ul>
           <li class="active"><a href="https://wisekhameleon.github.io/ ">Inicio</a></li>
@@ -119,7 +117,6 @@ Licence URI: http://www.os-templates.com/template-terms
           <li><a id="btn-subida" href="#"><i class="fas fa-cloud"></i> Mi nube</a></li>
         </ul>
       </div>
-
       <br class="clear" />
     </div>
   </div>
