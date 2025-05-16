@@ -6,331 +6,165 @@ Author URI: http://www.os-templates.com/
 Licence: Free to use under our free template licence terms
 Licence URI: http://www.os-templates.com/template-terms
 -->
-<script>
-  window.onload = async () => {
-    try {
-      const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url");
-      const data = await res.json();
-      const ngrokURL = data.url;
-
-      // Actualiza el botón de subida
-      const subirBtn = document.getElementById("btn-subida");
-      if (subirBtn) {
-        subirBtn.href = `${ngrokURL}/subida`;
-        subirBtn.innerText = "Subir archivo (ngrok)";
-      }
-    } catch (err) {
-      console.error("No se pudo obtener la URL ngrok:", err);
-    }
-  };
-</script>
-
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Wise Khameleon</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-  <!-- Prueba adsense !-->
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Wise Khameleon</title>
 
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2578423485218635"
-     crossorigin="anonymous"></script>
-</head>
-<body id="top">
-<div class="wrapper">
-  <div id="header">
-    <div id="logo">
-      <h1><FONT SIZE=5><a href="index.html">Wise Khameleon Shrine </a></FONT></h1>
-      <p>A wisdom repository</p>
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+
+  <!-- Estilos del template -->
+  <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+
+  <!-- Estilo del botón personalizado -->
   <style>
+    /* Estilo del botón */
+    #btn-subida {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: linear-gradient(to right, #00415b, #18005b);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.5s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
 
+    #btn-subida::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
+      transform: rotate(25deg);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
 
-    <!-- Prueba fuente !-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+    #btn-subida:hover::before {
+      opacity: 1;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
+    #btn-subida:hover {
+      background: linear-gradient(to right, #00575b, #3a00ff);
+      transform: scale(0.95);
+    }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto :wght@500&display=swap');
+    #btn-subida:active {
+      transform: scale(0.9);
+    }
 
-#btn-subida {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  background: linear-gradient(to right, #00415b, #18005b);
-  display: inline-block;
-  transition: all 0.5s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
+    #btn-subida i.fas.fa-cloud {
+      font-size: 18px;
+    }
 
-/* Efecto brillo */
-#btn-subida::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
-  transform: rotate(25deg);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-#btn-subida:hover::before {
-  opacity: 1;
-}
-
-/* Cambio de gradiente y tamaño en hover */
-#btn-subida:hover {
-  background: linear-gradient(to right, #00575b, #3a00ff);
-  transform: scale(0.95);
-}
-
-/* Efecto pulsación al hacer clic */
-#btn-subida:active {
-  transform: scale(0.9);
-}
-
-#btn-subida i.fas.fa-cloud {
-  margin-right: 8px;
-  font-size: 18px;
-}
-    /* CSS para reducir el tamaño de la letra */
+    /* Reducir tamaño del logo */
     #logo h1 {
-      font-size: 10px; /* Tamaño del título principal */
+      font-size: 10px;
     }
-
     #logo p {
-      font-size: 14px; /* Tamaño del subtítulo */
-    }
-
-
-    
-  </style>
-      
-    </div>
-    <div id="topnav">
-      <ul>
-     <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="pages/style-demo.html">Style Demo</a></li>
-        <li><a href="pages/full-width.html">Full Width</a></li>
-        <li class="last"><a href="#">A Long Link Text</a></li>
-       <a id="btn-subida" href="#">💭Mi nube</a>
-  
-        
-<!-- Prueba Crypto !-->
-
- <style>
-    #crypto-prices {
-      font-family: Arial, sans-serif;
-      margin: 10px;
-      padding: 10px;
-      border: 3px solid #ccc;
-      border-radius: 8px;
-      background-color: #0d0102;
-    }
-
-    #crypto-prices h2 {
-      color: #967508;
-    }
-
-    #crypto-prices p {
-      font-size: 1.2em;
-      margin: 5px 0;
+      font-size: 14px;
     }
   </style>
 </head>
-<body>
 
-
-  
-  <!-- Sección de Precios de Criptomonedas -->
-
-  
-  <div id="crypto-prices">
-    
-    <div>
-      <h1><font size=4><color= #967508>Precio de Cryptos cada 1 minuto</color></font></color></h1>
-      <h2><font size=3>Precio de Bitcoin (BTC): <span id="btc-price">Cargando...</span></font></h2>
-      <h2><font size=3>Precios de Criptomonedas de mi interés al 11/12/24</font></h2>
-      <p>Ethereum (ETH): <span id="eth-price">Cargando...</span></p>
-      <p>Cardano (ADA): <span id="ada-price">Cargando...</span></p>
-      <p>Dogecoin (DOGE): <span id="doge-price">Cargando...</span></p>
-    </div>
-  </div>
-
+<body id="top">
   <script>
-    const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano,dogecoin&vs_currencies=usd';
-
-    // Función para obtener los precios y actualizarlos en el HTML
-    async function fetchCryptoPrices() {
+    window.onload = async () => {
       try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        // Actualiza los precios en el HTML
-        document.getElementById('btc-price').innerText = `$${data.bitcoin.usd}`;
-        document.getElementById('eth-price').innerText = `$${data.ethereum.usd}`;
-        document.getElementById('ada-price').innerText = `$${data.cardano.usd}`;
-        document.getElementById('doge-price').innerText = `$${data.dogecoin.usd}`;
-      } catch (error) {
-        console.error('Error al obtener precios:', error);
+        const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url ");
+        const data = await res.json();
+        const ngrokURL = data.url;
+        // Actualiza el botón de subida
+        const subirBtn = document.getElementById("btn-subida");
+        if (subirBtn) {
+          subirBtn.href = `${ngrokURL}/subida`;
+          subirBtn.innerHTML = '<i class="fas fa-cloud"></i> Subir archivo (ngrok)';
+        }
+      } catch (err) {
+        console.error("No se pudo obtener la URL ngrok:", err);
       }
-    }
-
-    // Llama a la función al cargar la página
-    fetchCryptoPrices();
-
-    // Opcional: Actualiza los precios cada minuto
-    setInterval(fetchCryptoPrices, 60000);
+    };
   </script>
 
-</body>
-        <!-- Fin pruebas Crypto !-->
-
-
-        
-      </ul>
-    </div>
-    <br class="clear" />
-  </div>
-</div>
-<div class="wrapper">
-  <div id="latest">
-    <div class="fl_left"><a href="#"><img src="images/demo/575x300.gif" alt="" /></a></div>
-    <div class="fl_right">
-      <h2>Cursus penati saccum ut.</h2>
-      <p>Cursuspenatisaccum ut curabitur nulla tellus tor ames a in curabitur pede. Idet mollisi eros dis orci congue elis et curabitur consequam intesque. Cursuspenatisaccum ut curabitur nulla tellus tor.</p>
-      <ul>
-        <li><a href="#"><img src="images/demo/100x100.gif" alt="" /></a></li>
-        <li><a href="#"><img src="images/demo/100x100.gif" alt="" /></a></li>
-        <li class="last"><a href="#"><img src="images/demo/100x100.gif" alt="" /></a></li>
-      </ul>
-    </div>
-    <br class="clear" />
-  </div>
-</div>
-<div class="wrapper">
-  <div id="intro">
-    <ul>
-      <li>
-        <h2>Indonectetus facilis leo nibh</h2>
-        <div class="imgholder"><a href="#"><img src="images/demo/300x150.gif" alt="" /></a></div>
-        <p>Morbitincidunt maurisque eros molest nunc anteget sed vel lacus mus semper. Anter dumnullam interdum eros dui urna consequam ac nisl nullam ligula vestassa. </p>
-        <p>Condimentumfelis et amet tellent quisquet a leo lacus nec augue accumsan. Sagittislaorem dolor ipsum at urna et pharetium malesuada nis consectus odio.</p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-      </li>
-      <li>
-        <h2>Indonectetus facilis leo nibh</h2>
-        <div class="imgholder"><a href="#"><img src="images/demo/300x150.gif" alt="" /></a></div>
-        <p>Morbitincidunt maurisque eros molest nunc anteget sed vel lacus mus semper. Anter dumnullam interdum eros dui urna consequam ac nisl nullam ligula vestassa. </p>
-        <p>Condimentumfelis et amet tellent quisquet a leo lacus nec augue accumsan. Sagittislaorem dolor ipsum at urna et pharetium malesuada nis consectus odio.</p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-      </li>
-      <li class="last">
-        <h2>Indonectetus facilis leo nibh</h2>
-        <div class="imgholder"><a href="#"><img src="images/demo/300x150.gif" alt="" /></a></div>
-        <p>Morbitincidunt maurisque eros molest nunc anteget sed vel lacus mus semper. Anter dumnullam interdum eros dui urna consequam ac nisl nullam ligula vestassa. </p>
-        <p>Condimentumfelis et amet tellent quisquet a leo lacus nec augue accumsan. Sagittislaorem dolor ipsum at urna et pharetium malesuada nis consectus odio.</p>
-        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-      </li>
-    </ul>
-    <br class="clear" />
-  </div>
-</div>
-<div class="wrapper">
-  <div id="container">
-    <div id="content">
-      <!-- Bloque de anuncio Google Adsense -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2578423485218635"
-     data-ad-slot="your-ad-slot-id"
-     data-ad-format="auto"></ins>
-
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    </div>
-    <div id="column">
-      <div class="holder">
-        <h2>Nullamlacus loborttis</h2>
-        <ul id="latestnews">
-          <li class="last"><img class="imgl" src="images/demo/80x80.gif" alt="" />
-            <p><strong>Indonectetus facilis leo nibh.</strong></p>
-            <p>Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna.</p>
-            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-          </li>
+  <div class="wrapper">
+    <div id="header">
+      <div id="logo">
+        <h1><a href="https://wisekhameleon.github.io">Wise Khameleon Shrine</a></h1>
+        <p>A wisdom repository</p>
+      </div>
+      <div id="topnav">
+        <ul>
+          <li class="active"><a href="https://wisekhameleon.github.io/ ">Inicio</a></li>
+          <li><a href="pages/style-demo.html">Style Demo</a></li>
+          <li><a href="pages/full-width.html">Full Width</a></li>
+          <li class="last"><a href="#">A Long Link Text</a></li>
+          <li><a id="btn-subida" href="#"><i class="fas fa-cloud"></i> Mi nube</a></li>
         </ul>
       </div>
+      <br class="clear" />
     </div>
-    <br class="clear" />
   </div>
-</div>
-<div class="wrapper">
-  <div id="footer">
-    <div id="newsletter">
-      <h2>Stay In The Know !</h2>
-      <p>Please enter your email to join our mailing list</p>
-      <form action="#" method="post">
-        <fieldset>
-          <legend>News Letter</legend>
-          <input type="text" value="Enter Email Here&hellip;"  onfocus="this.value=(this.value=='Enter Email Here&hellip;')? '' : this.value ;" />
-          <input type="submit" name="news_go" id="news_go" value="GO" />
-        </fieldset>
-      </form>
-      <p>To unsubscribe please <a href="#">click here &raquo;</a></p>
-    </div>
-    <div class="footbox">
-      <h2>Lacus interdum</h2>
-      <ul>
-        <li><a href="#">Praesent et eros</a></li>
-        <li><a href="#">Praesent et eros</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Suspendisse in neque</a></li>
-        <li class="last"><a href="#">Praesent et eros</a></li>
-      </ul>
-    </div>
-    <div class="footbox">
-      <h2>Lacus interdum</h2>
-      <ul>
-        <li><a href="#">Praesent et eros</a></li>
-        <li><a href="#">Praesent et eros</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Suspendisse in neque</a></li>
-        <li class="last"><a href="#">Praesent et eros</a></li>
-      </ul>
-    </div>
-    <div class="footbox">
-      <h2>Lacus interdum</h2>
-      <ul>
-        <li><a href="#">Praesent et eros</a></li>
-        <li><a href="#">Praesent et eros</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Suspendisse in neque</a></li>
-        <li class="last"><a href="#">Praesent et eros</a></li>
-      </ul>
-    </div>
-    <br class="clear" />
-  </div>
-</div>
-<div class="wrapper">
-  <div id="copyright">
-    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-    <br class="clear" />
-  </div>
-</div>
 
-  
+  <!-- Contenido adicional como imágenes, noticias, etc. -->
+  <div class="wrapper">
+    <div id="latest">
+      <div class="fl_left"><a href="#"><img src="images/demo/575x300.gif" alt="" /></a></div>
+      <div class="fl_right">
+        <h2>Cursus penati saccum ut.</h2>
+        <p>Cursuspenatisaccum ut curabitur nulla tellus tor ames a in curabitur pede. Idet mollisi eros dis orci congue elis et curabitur consequam intesque. Cursuspenatisaccum ut curabitur nulla tellus tor.</p>
+        <ul>
+          <li><a href="#"><img src="images/demo/100x100.gif" alt="" /></a></li>
+          <li><a href="#"><img src="images/demo/100x100.gif" alt="" /></a></li>
+          <li class="last"><a href="#"><img src="images/demo/100x100.gif" alt="" /></a></li>
+        </ul>
+      </div>
+      <br class="clear" />
+    </div>
+  </div>
 
+  <!-- Más contenido... -->
+  <!-- Aquí puedes incluir más bloques como "intro", "container", etc., según sea necesario -->
+
+  <div class="wrapper">
+    <div id="footer">
+      <div id="newsletter">
+        <h2>Stay In The Know !</h2>
+        <p>Please enter your email to join our mailing list</p>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>News Letter</legend>
+            <input type="text" value="Enter Email Here&hellip;" onfocus="this.value=(this.value=='Enter Email Here&hellip;')? '' : this.value ;" />
+            <input type="submit" name="news_go" id="news_go" value="GO" />
+          </fieldset>
+        </form>
+        <p>To unsubscribe please <a href="#">click here &raquo;</a></p>
+      </div>
+      <br class="clear" />
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+      <br class="clear" />
+    </div>
+  </div>
 </body>
 </html>
