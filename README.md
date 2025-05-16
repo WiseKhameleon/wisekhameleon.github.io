@@ -80,6 +80,28 @@ Licence URI: http://www.os-templates.com/template-terms
     #logo p {
       font-size: 14px;
     }
+
+    /* Topnav start */
+     #topnav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+  }
+
+  #topnav li {
+    display: block;
+    line-height: normal;
+    padding: 5px 0;
+  }
+
+  #topnav a {
+    display: inline-block;
+    text-align: center;
+  }
+    /* Topnav end */
   </style>
 </head>
 
