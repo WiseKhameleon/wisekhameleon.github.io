@@ -36,6 +36,7 @@ Licence URI: http://www.os-templates.com/template-terms
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      margin-top: 5px; /* Ajusta el margen superior */
       transition: all 0.5s ease;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       position: relative;
