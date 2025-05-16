@@ -37,6 +37,9 @@ Licence URI: http://www.os-templates.com/template-terms
       align-items: center;
       gap: 8px;
       margin-top: 5px; /* Ajusta el margen superior */
+      align-items: center; /* Centra verticalmente */
+      justify-content: center; /* Centra horizontalmente */
+      gap: 8px; /* Espacio entre ícono y texto */
       transition: all 0.5s ease;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       position: relative;
