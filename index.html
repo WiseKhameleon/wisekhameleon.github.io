@@ -114,7 +114,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <li><a href="pages/style-demo.html">Style Demo</a></li>
           <li><a href="pages/full-width.html">Full Width</a></li>
           <li class="last"><a href="#">A Long Link Text</a></li>
-          <li><a id="btn-subida" href="#"><i class="fas fa-cloud"></i> Mi nube</a></li>
+          <li><a id="btn-subida" href="#"><i class="fas fa-cloud"></i>Mi nube<i class="fa-solid fa-house-tsunami"></i></a></li>
         </ul>
       </div>
       <br class="clear" />
