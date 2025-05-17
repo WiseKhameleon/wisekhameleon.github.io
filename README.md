@@ -113,21 +113,28 @@ Licence URI: http://www.os-templates.com/template-terms
 
 <body id="top">
   <script>
-    window.onload = async () => {
-      try {
-        const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url ");
-        const data = await res.json();
-        const ngrokURL = data.url;
-        // Actualiza el botón de subida
-        const subirBtn = document.getElementById("btn-subida");
-        if (subirBtn) {
-          subirBtn.href = `${ngrokURL}/subida`;
-          subirBtn.innerHTML = '<i class="fas fa-cloud"></i> Subir archivo (ngrok)';
-        }
-      } catch (err) {
-        console.error("No se pudo obtener la URL ngrok:", err);
+
+  window.onload = async () => {
+    try {
+      const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url");
+      const data = await res.json();
+      const ngrokURL = data.url;
+
+      // Actualiza el botón de subida
+      const subirBtn = document.getElementById("btn-subida");
+      if (subirBtn && ngrokURL) {
+        subirBtn.href = `${ngrokURL}/subida`;
+        subirBtn.innerHTML = '<i class="fas fa-cloud"></i> Subir archivo (ngrok)';
       }
-    };
+    } catch (err) {
+      console.error("No se pudo obtener la URL ngrok:", err);
+      // Opcional: Oculta el botón si no hay conexión con el backend
+      const subirBtn = document.getElementById("btn-subida");
+      if (subirBtn) {
+        subirBtn.style.display = "none";
+      }
+    }
+  };
   </script>
 
   <div class="wrapper">
