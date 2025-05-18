@@ -112,6 +112,42 @@ Licence URI: http://www.os-templates.com/template-terms
 </head>
 
 <body id="top">
+
+
+/* prueba script 2*/
+
+
+<script>
+    window.onload = async () => {
+      const btn = document.getElementById("btn-subida");
+      const loadingText = document.getElementById("loading-text");
+      const errorText = document.getElementById("error-text");
+
+      try {
+        const res = await fetch("https://whitekhameleon.ddns.net/ngrok-url");
+        if (!res.ok) throw new Error("Respuesta no válida");
+
+        const data = await res.json();
+        const ngrokURL = data.url;
+
+        if (ngrokURL) {
+          btn.href = `${ngrokURL}/subida`;
+          btn.style.display = "inline-flex";
+          loadingText.style.display = "none";
+        } else {
+          throw new Error("URL vacía");
+        }
+      } catch (err) {
+        console.error("Error obteniendo la URL:", err);
+        btn.style.display = "none";
+        loadingText.style.display = "none";
+        errorText.style.display = "inline";
+      }
+    };
+  </script>
+
+
+/* fin prueba script 2 qwen
   <script>
     
   window.onload = async () => {
@@ -136,7 +172,7 @@ Licence URI: http://www.os-templates.com/template-terms
     }
   };
   </script>
-
+*/
   <div class="wrapper">
     <div id="header">
       <div id="logo">
