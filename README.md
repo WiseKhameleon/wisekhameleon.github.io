@@ -10,7 +10,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <title>Wise Khameleon Testing 2</title>
+  <title>Wise Khameleon Testing 2 - Este no se hace Deploy si hay un index.html</title>
 
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto :wght@400;500;700&display=swap" rel="stylesheet">
